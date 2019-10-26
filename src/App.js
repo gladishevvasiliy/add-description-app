@@ -1,23 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+
 import './App.css';
 import { fetchList } from './redux/symbolsList/listActions';
 function App(props) {
-  console.log(props)
   return (
     <div >
-      <button onClick={() => props.fetchList()}>Show List</button>
+      <button onClick={() => props.actions.fetchList()}>Show List</button>
     </div>
   );
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return state;
 }
-const mapDispatchToProps = (dispatch) => {
-  return { fetchList }
-}
+const mapDispatchToProps = (dispatch) => ({
+  actions: bindActionCreators({ fetchList }, dispatch)
+})
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
