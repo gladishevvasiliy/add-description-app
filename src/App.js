@@ -1,14 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
+import { Container } from 'react-bootstrap';
+import ListConnected from './containers/ListConnected';
 
-import './App.css';
 import { fetchList } from './redux/symbolsList/listActions';
 function App(props) {
+  const [isLoaded, setLoadingState] = useState(false)
+
+  useEffect(() => {
+    if (!isLoaded) {
+      props.actions.fetchList()
+      setLoadingState(true)
+    }
+  })
+
   return (
-    <div >
-      <button onClick={() => props.actions.fetchList()}>Show List</button>
-    </div>
+    <Container >
+      <ListConnected />
+    </Container>
   );
 }
 

@@ -10,6 +10,5 @@ export const loadListFailed = () => ({
 })
 
 export const fetchList = () => {
-    console.log('THERE')
     return { type: 'FETCHED_LIST' }
 };
