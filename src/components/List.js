@@ -16,6 +16,14 @@ const Loader = styled.div`
 
   margin: -200px 0 0 -240px;
 `
+
+const StyledModal = styled(Modal)`
+.modal-dialog {
+  max-width: 700px;
+}
+`
+
+
 const devValue = {
   id: 2,
   name: "1212",
@@ -68,8 +76,17 @@ export default class List extends Component {
     })
   }
 
-  saveDescription = (value) => {
-    console.log(value)
+  saveDescription = (values) => {
+    const { updateDescription } = this.props
+    const dataForSending = {
+      dependency: values.dependency.value,
+      sounds: values.sounds.map(sound => ({
+        direction: sound.direction.value,
+        length: sound.length.value,
+        pitch: sound.pitch.value
+      }))
+    }
+    updateDescription(dataForSending)
     this.closeEditModal()
   }
 
@@ -87,7 +104,7 @@ export default class List extends Component {
         ) : (
             <>
               {values.map(category => <Category key={category._id} category={category} showEditModal={this.showEditModal} />)}
-              <Modal show={showModal} onHide={this.closeEditModal}>
+              <StyledModal show={showModal} onHide={this.closeEditModal}>
                 <Modal.Header closeButton>
                   <Modal.Title>Редактирование описания</Modal.Title>
                 </Modal.Header>
@@ -97,12 +114,9 @@ export default class List extends Component {
                 <Modal.Footer>
                   <Button variant="secondary" onClick={this.closeEditModal}>
                     Отмена
-          </Button>
-                  <Button variant="primary" onClick={this.saveDescription}>
-                    Сохранить изменения
-          </Button>
+                  </Button>
                 </Modal.Footer>
-              </Modal>
+              </StyledModal>
             </>
           )}
       </>
