@@ -96,7 +96,7 @@ export default class List extends Component {
 
   render() {
     const { values, loading } = this.props
-    const { showModal } = this.state
+    const { showModal, valueForEdit } = this.state
     return (
       <>
         {loading ? (
@@ -111,7 +111,7 @@ export default class List extends Component {
                   <Modal.Title>Редактирование описания</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                  <Description value={devValue} onSubmit={this.saveDescription} />
+                  <Description value={valueForEdit} onSubmit={this.saveDescription} />
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={this.closeEditModal}>

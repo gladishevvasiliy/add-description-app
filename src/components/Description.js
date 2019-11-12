@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Form, Field } from 'react-final-form'
 import arrayMutators from 'final-form-arrays'
 import { FieldArray } from 'react-final-form-arrays'
+import get from 'lodash/get'
 import { Form as BootstrapForm, Row, Col, Button } from 'react-bootstrap'
 import RFReactSelect from './RFReactSelect'
 import { getOptions, getDependency, getDirection, getLength, getPitch } from '../utils'
@@ -51,14 +52,13 @@ const AddButton = styled.div`
   }
 `
 
-const getInitialValues = ({ sounds, dependency }) => ({
+const getInitialValues = ({ sounds = [], dependency = 0 }) => ({
   dependency: { value: dependency, label: getDependency(dependency) },
   sounds: sounds.map(sound => ({
-    direction: { value: sound.direction, label: getDirection(sound.direction) },
-    length: { value: sound.length, label: getLength(sound.length) },
-    pitch: { value: sound.pitch, label: getPitch(sound.pitch) }
+    direction: { value: get(sound, 'direction'), label: getDirection(get(sound, 'direction')) },
+    length: { value: get(sound, 'length'), label: getLength(get(sound, 'length')) },
+    pitch: { value: get(sound, 'pitch'), label: getPitch(get(sound, 'pitch')) }
   })),
-
 })
 
 const TextField = ({ name, onChange }) => (
@@ -77,7 +77,7 @@ const TextField = ({ name, onChange }) => (
 
 const Description = ({ value: { sounds_description: description }, onSubmit }) => {
 
-  const initialValues = getInitialValues(description)
+  const initialValues = description ? getInitialValues(description) : { dependency: { value: 0, label: getDependency(0) }, sounds: [] }
   return (
     <>
       <BootstrapForm>
