@@ -18,7 +18,7 @@ const Category = ({ category, showEditModal }) => (
         </tr>
       </thead>
       <tbody>
-        {category.symbols.map(value => <CategoryItem value={value} showEditModal={showEditModal} />)}
+        {category.symbols.map(value => <CategoryItem key={value._id} categoryId={category._id} value={value} showEditModal={showEditModal} />)}
       </tbody>
     </Table>
   </>)

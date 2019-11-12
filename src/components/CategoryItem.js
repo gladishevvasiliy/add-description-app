@@ -19,7 +19,7 @@ const KrukViewWrapper = styled.div`
  }
 `
 
-const CategoryItem = ({ value, showEditModal }) => {
+const CategoryItem = ({ categoryId, value, showEditModal }) => {
   return (
     <tr>
       <td width="130px">
@@ -33,7 +33,7 @@ const CategoryItem = ({ value, showEditModal }) => {
       <td width="50px">{value.pitch}</td>
       <td width="50px">{value.sounds}</td>
       <td width="100px">{value.opts.join(', ')}</td>
-      <td width="100px"><Button onClick={showEditModal(value)}>Редактировать описание</Button></td>
+      <td width="100px"><Button onClick={showEditModal({ ...value, categoryId })}>Редактировать описание</Button></td>
     </tr>
   )
 }

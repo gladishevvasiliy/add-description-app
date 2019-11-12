@@ -6,20 +6,21 @@ import {
 } from './actions';
 
 function* fetchNewDescription(action) {
-    console.log(JSON.stringify(action.payload))
+    const { value: bodyData, categoryId, symbolId } = action.payload
+    console.log(JSON.stringify({ bodyData }))
     try {
         const value = yield call(() => {
-            return fetch('lol',
+            return fetch(`https://tranquil-plateau-55628.herokuapp.com/kruk/${categoryId}/edit-description/${symbolId}`,
                 {
-                    method: "post",
+                    method: "put",
                     headers: {
                         'Accept': 'application/json',
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify(action.payload)
+                    body: JSON.stringify(bodyData)
                 })
         })
-        console.log(value)
+        console.log('success', { value })
         yield put(updateDescriptionSuccess(value))
     } catch (e) {
         yield put(updateDescriptionFailed(e));

@@ -63,6 +63,7 @@ export default class List extends Component {
   };
 
   showEditModal = (value) => () => {
+    console.log({ value })
     this.setState({
       showModal: true,
       valueForEdit: value
@@ -78,6 +79,7 @@ export default class List extends Component {
 
   saveDescription = (values) => {
     const { updateDescription } = this.props
+    const { valueForEdit: { _id: symbolId, categoryId } } = this.state
     const dataForSending = {
       dependency: values.dependency.value,
       sounds: values.sounds.map(sound => ({
@@ -86,7 +88,7 @@ export default class List extends Component {
         pitch: sound.pitch.value
       }))
     }
-    updateDescription(dataForSending)
+    updateDescription({ value: dataForSending, categoryId, symbolId })
     this.closeEditModal()
   }
 
@@ -94,7 +96,7 @@ export default class List extends Component {
 
   render() {
     const { values, loading } = this.props
-    const { showModal, valueForEdit } = this.state
+    const { showModal } = this.state
     return (
       <>
         {loading ? (
