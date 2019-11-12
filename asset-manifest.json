@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/add-description-app/static/css/main.6abd79f8.chunk.css",
+    "main.js": "/add-description-app/static/js/main.fcd2209a.chunk.js",
+    "main.js.map": "/add-description-app/static/js/main.fcd2209a.chunk.js.map",
+    "runtime-main.js": "/add-description-app/static/js/runtime-main.ee92e3a3.js",
+    "runtime-main.js.map": "/add-description-app/static/js/runtime-main.ee92e3a3.js.map",
+    "static/js/2.d3e36691.chunk.js": "/add-description-app/static/js/2.d3e36691.chunk.js",
+    "static/js/2.d3e36691.chunk.js.map": "/add-description-app/static/js/2.d3e36691.chunk.js.map",
+    "index.html": "/add-description-app/index.html",
+    "precache-manifest.1d28fb4414d4697798d03be7b06bc543.js": "/add-description-app/precache-manifest.1d28fb4414d4697798d03be7b06bc543.js",
+    "service-worker.js": "/add-description-app/service-worker.js",
+    "static/css/main.6abd79f8.chunk.css.map": "/add-description-app/static/css/main.6abd79f8.chunk.css.map",
+    "static/media/Kruk-Kalashn-edit-VG.ttf": "/add-description-app/static/media/Kruk-Kalashn-edit-VG.a204d2e7.ttf",
+    "static/media/Loading.gif": "/add-description-app/static/media/Loading.f4404720.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ee92e3a3.js",
+    "static/js/2.d3e36691.chunk.js",
+    "static/css/main.6abd79f8.chunk.css",
+    "static/js/main.fcd2209a.chunk.js"
+  ]
+}
